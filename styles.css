@@ -73,7 +73,7 @@ html {
 @media (max-width: 440px) {
   .input-box {
     min-width: 25rem;
-    margin: 0;
+    margin: 2rem;
   }
 
   .input {
@@ -230,6 +230,12 @@ html {
   top: 7rem;
   right: 71.5rem;
   font-size: 1.3rem;
+}
+
+.task-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 footer {
