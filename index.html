@@ -3,36 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerenciador de tarefas</title>
 
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Gerenciador de tarefas</title>
   </head>
   <body>
+    <header class="page-title">
+      <h1>Gerenciador de tarefas</h1>
+    </header>
     <div class="container">
-      <div class="empty-input-error hidden">Por favor digite uma tarefa</div>
       <div class="input-box">
-        <input type="text" class="input" placeholder="Escreva sua tarefa" />
+        <input
+          type="text"
+          class="input"
+          placeholder="Escreva sua tarefa"
+          maxlength="25"
+        />
         <button class="add-task">+</button>
+
+        <div class="list-task"></div>
       </div>
 
-      <div class="list-task"></div>
-
       <div class="edit-window hidden">
-        <button class="close-window">fechar</button>
+        <button class="close-window">X</button>
         <h2 class="edit-id-task"></h2>
         <hr />
         <form>
           <div class="edit-form">
-            <label for="nome">Nome</label>
-            <input type="text" class="edit-input" />
+            <label for="reescreva-a-tarefa" class="label-title"
+              >Reescreva a tarefa:</label
+            >
+            <input type="text" class="edit-input" maxlength="25" />
             <button class="save-btn">Salvar</button>
           </div>
         </form>
-
-        <div class="window-bg hidden"></div>
       </div>
     </div>
+    <div class="window-bg hidden"></div>
 
-    <script src="scripts.js"></script>
+    <footer>
+      <p>
+        ₢ Criado por
+        <a
+          href="https://www.linkedin.com/in/jo%C3%A3o-pedro-martins-fornazier-800318265/"
+          >João Pedro Fornazier</a
+        >
+      </p>
+    </footer>
+    <script defer src="scripts.js"></script>
   </body>
 </html>
