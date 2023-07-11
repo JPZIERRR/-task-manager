@@ -4,11 +4,20 @@ const buttonAdd = document.querySelector('.add-task');
 const error = document.querySelector('.empty-input-error');
 const listContainer = document.querySelector('.list-task');
 
+/* Janela de edição */
+const windowEdit = document.querySelector('.edit-window');
+const windowBg = document.querySelector('.window-bg');
+const updateButton = document.querySelector('.save-btn');
+const closeButton = document.querySelector('.close-window');
+const editIdTask = document.querySelector('.edit-id-task');
+const inputNewTask = document.querySelector('.edit-input');
+
 const idGenerator = function () {
   const id = Math.floor(Math.random() * 3000);
   return id;
 };
 
+/* Eventos */
 input.addEventListener('keypress', e => {
   if (e.keyCode === 13) {
     e.preventDefault;
@@ -30,6 +39,51 @@ buttonAdd.addEventListener('click', () => {
   addTask(task);
 });
 
+closeButton.addEventListener('click', () => {
+  changeWindow();
+});
+
+updateButton.addEventListener('click', e => {
+  e.preventDefault();
+
+  const taskId = editIdTask.innerHTML.replace('#', '');
+
+  const task = {
+    name: inputNewTask.value,
+    id: taskId,
+  };
+
+  const currentTask = document.getElementById(`${taskId}`);
+
+  if (currentTask) {
+    const li = createLi(task);
+    listContainer.replaceChild(li, currentTask);
+    changeWindow();
+  }
+});
+
+inputNewTask.addEventListener('keypress', e => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+
+    const taskId = editIdTask.innerHTML.replace('#', '');
+
+    const task = {
+      name: inputNewTask.value,
+      id: taskId,
+    };
+
+    const currentTask = document.getElementById(`${taskId}`);
+
+    if (currentTask) {
+      const li = createLi(task);
+      listContainer.replaceChild(li, currentTask);
+      changeWindow();
+    }
+  }
+});
+
+/* Functions */
 const addTask = function (task) {
   const li = createLi(task);
   listContainer.appendChild(li);
@@ -66,7 +120,11 @@ const createLi = function (task) {
 
 const edit = function (idTask) {
   const li = document.getElementById(`${idTask}`);
+  const span = document.querySelector('.task-text');
   if (li) {
+    editIdTask.innerHTML = `#${idTask}`;
+    inputNewTask.value = span.innerText;
+    changeWindow();
   }
 };
 
@@ -81,4 +139,9 @@ const delet = function (idTask) {
       listContainer.removeChild(li);
     }
   }
+};
+
+const changeWindow = function () {
+  windowBg.classList.toggle('hidden');
+  windowEdit.classList.toggle('hidden');
 };

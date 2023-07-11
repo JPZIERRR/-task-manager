@@ -15,11 +15,7 @@
 
 .hidden {
   visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
-  opacity: 100;
+  display: none;
 }
 
 .list-task {
